@@ -1,0 +1,56 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.xiaobei.assistant'
+    // 华强北手表的安卓版本多数为 8~11，为保证最广兼容
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.xiaobei.assistant"
+        minSdk 26          // Android 8.0 起（绝大多数华强北手表满足）
+        targetSdk 28       // 避免部分手表系统的“后台限制”政策影响常驻监听
+        versionCode 1
+        versionName "1.0"
+    }
+
+    // 只保留华强北联发科/全志/展锐芯片常见架构，减小体积
+    ndk {
+        abiFilters 'armeabi-v7a', 'arm64-v8a'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false   // 便宜手表的系统较老，避免混淆引发兼容问题
+        }
+    }
+
+    aaptOptions {
+        noCompress 'gram', 'mfc', 'lm', 'mdl', 'cfg', 'zip'
+    }
+
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+// 强制 Java 源文件按 UTF-8 编译，避免手表中文乱码
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    // Vosk 离线中文语音识别（含唤醒词模式）——完全免费、无需联网、不花钱
+    implementation 'com.alphacephei:vosk-android:0.3.47'
+
+    implementation 'androidx.core:core:1.10.1'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+}

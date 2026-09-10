@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0D1117"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/tvStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="准备中…"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:gravity="center" />
+
+    <TextView
+        android:id="@+id/tvModel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="离线语音模型：未下载"
+        android:textSize="11sp"
+        android:textColor="#8B949E"
+        android:gravity="center"
+        android:paddingBottom="6dp" />
+
+    <Button
+        android:id="@+id/btnDownload"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="① 下载语音模型(首次必做)"
+        android:textSize="13sp" />
+
+    <Button
+        android:id="@+id/btnApi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="② 设置千问 API Key"
+        android:textSize="13sp" />
+
+    <Button
+        android:id="@+id/btnAuto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="③ 开机自启：关"
+        android:textSize="13sp" />
+
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="★ 开始随叫随到"
+        android:textSize="13sp" />
+
+    <Button
+        android:id="@+id/btnStop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="■ 停止监听(省电)"
+        android:textSize="13sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tvConv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:textColor="#C9D1D9"
+        android:textSize="13sp"
+        android:scrollbars="vertical"
+        android:text="说“小北 小北”唤醒我哦～\n" />
+
+</LinearLayout>
