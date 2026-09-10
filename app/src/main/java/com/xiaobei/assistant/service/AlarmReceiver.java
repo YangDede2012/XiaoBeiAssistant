@@ -52,7 +52,8 @@ public class AlarmReceiver extends BroadcastReceiver {
         if (isAlarm) {
             // 先震动+响铃，等约 1 秒再开始语音，避免互相遮盖
             ring(c);
-            delayed(1200L, () -> speak(c, "小北提醒你，" + content));
+            final String __xbcContent = content;
+            delayed(1200L, () -> speak(c, "小北提醒你，" + __xbcContent));
         } else {
             speak(c, "小北提醒你，" + content);
         }
